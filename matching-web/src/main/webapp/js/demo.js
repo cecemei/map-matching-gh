@@ -158,18 +158,19 @@ GraphHopperMapMatching.prototype.doRequest = function (content, callback, reqArg
 function createMap(divId) {
     var osmAttr = '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors';
 
-    var omniscale = L.tileLayer.wms('https://maps.omniscale.net/v1/graphhp-7ae5b6f7/tile', {
+    /*var omniscale = L.tileLayer.wms('https://maps.omniscale.net/v1/graphhp-7ae5b6f7/tile', {
         layers: 'osm',
         attribution: osmAttr + ', &copy; <a href="http://maps.omniscale.com/">Omniscale</a>'
-    });
+    });*/
 
     var osm = L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
         attribution: osmAttr
     });
 
-    var map = L.map(divId, {layers: [omniscale]});
-    L.control.layers({"Omniscale": omniscale,
-        "OpenStreetMap": osm, }).addTo(map);
+    //var map = L.map(divId, {layers: [omniscale]});
+    var map = L.map(divId, {layers: []});
+   // L.control.layers({"Omniscale": omniscale,
+    //    "OpenStreetMap": osm, }).addTo(map);
     L.control.scale().addTo(map);
     return map;
 }
